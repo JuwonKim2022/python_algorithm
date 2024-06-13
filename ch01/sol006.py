@@ -18,3 +18,16 @@ def sol_006(nums, target):
     return list(answer)
 
 print(sol_006([7,9,2,13,3,15,8,11], 12))
+
+
+
+def sol_0061(nums, target):
+    answer = [0] * 2
+    n = len(nums)
+    for i in range(n-1):
+        for j in range(i+1, n):
+            if nums[i] + nums[j] == target:
+                return sorted([nums[i], nums[j]])
+    return list(answer)
+print(sol_0061([7,9,2,13,3,15,8,11], 12))
+print(sol_006([1,1,1,1,1], 12))
