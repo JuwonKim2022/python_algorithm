@@ -1,27 +1,27 @@
-#<7-6. 고정된 숫자 >
-# 오름차순 정렬 일차원 배열
-# 인덱스 번호와 자기 자신값이 같으면 이 원소는 고정된 숫자
-# nums = 오름차순으로 정렬된 정부 배열
-# 고정된 숫자 반환하는 프로그램, 값은 유일값
-# 없을 경우 -1
+#<7-5. 트럭 찾기 >
+#이삿집센터 여러 트럭, 각 트럭 총 무게제한 있음
+#이사비용 = 선택한 트럭 무게 * 10
+#nums = 각 트럭 무게 제한 오름차순, wight = 이사하는 짐 총 무게
+#짐 실을 수 있는 최소 비용 찾아 트럭 인덱스 수 구하기
+#트럭 없을 경우 -1
 
 from bisect import bisect_left, bisect_right
 
-print('=====[7-6]=====')
-def sol_0706(nums):
-    left = 0
-    right = len(nums)-1
-    while left <= right:
-        mid = (left + right)//2
-        if nums[mid] == mid:
-            return nums[mid]
-        if nums[mid] < mid:
-            left = mid + 1
-        else:
-            right = mid - 1
+print('=====[7-5]=====')
+def sol_0705(nums, weight):
+    #원소 중 무게보다 크거나 같은 것 중에서, 가장 작은 것 인덱스 번호
+    answer = bisect_left(nums, weight)
+    return -1 if answer == len(nums) else answer
 
-    return -1
+    # left = 0
+    # right = len(nums)
+    # while left < right:
+    #     mid = (left + right)//2
+    #     if weight > nums[mid]:
+    #         left = mid + 1
+    #     else:
+    #         right = mid
+    # return -1 if right==len(nums) else right
 
-print(sol_0706([-3,-2,0,1,3,5,8,9,12]))
-print(sol_0706([1,2,3,4,5,6,7,8,9]))
-print(sol_0706([0,2,3,4,5,6,7,8,9,10,11,12]))
+print(sol_0705([100,120,150,160,165,170,175,180,190,200], 170))
+print(sol_0705([20,30,40,50,60,70], 90))
